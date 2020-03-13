@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on 生活在别处</title>
+    <link>https://VersifierL.github.io/posts/</link>
+    <description>Recent content in Posts on 生活在别处</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Fri, 13 Mar 2020 02:20:50 +0800</lastBuildDate>
+    
+	<atom:link href="https://VersifierL.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Creating a New Theme</title>
+      <link>https://VersifierL.github.io/2014/creating-a-new-theme/</link>
+      <pubDate>Sun, 28 Sep 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://VersifierL.github.io/2014/creating-a-new-theme/</guid>
+      <description>Introduction This tutorial will show you how to create a simple theme in Hugo. I assume that you are familiar with HTML, the bash command line, and that you are comfortable using Markdown to format content. I&amp;rsquo;ll explain how Hugo uses templates and how you can organize your templates to create a theme. I won&amp;rsquo;t cover using CSS to style your theme.
+We&amp;rsquo;ll start with creating a new site with a very basic template.</description>
+    </item>
+    
+    <item>
+      <title>Migrate to Hugo from Jekyll</title>
+      <link>https://VersifierL.github.io/2014/migrate-from-jekyll/</link>
+      <pubDate>Mon, 10 Mar 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://VersifierL.github.io/2014/migrate-from-jekyll/</guid>
+      <description>Move static content to static Jekyll has a rule that any directory not starting with _ will be copied as-is to the _site output. Hugo keeps all static content under static. You should therefore move it all there. With Jekyll, something that looked like
+▾ &amp;lt;root&amp;gt;/ ▾ images/ logo.png  should become
+▾ &amp;lt;root&amp;gt;/ ▾ static/ ▾ images/ logo.png  Additionally, you&amp;rsquo;ll want any files that should reside at the root (such as CNAME) to be moved to static.</description>
+    </item>
+    
+    <item>
+      <title>NodeRedOne</title>
+      <link>https://VersifierL.github.io/2020/noderedone/</link>
+      <pubDate>Fri, 13 Mar 2020 02:20:50 +0800</pubDate>
+      
+      <guid>https://VersifierL.github.io/2020/noderedone/</guid>
+      <description>一 安装环境 1.在私有服务器上安装CentOS 阿里云服务器有提供多种系统镜像，这里我使用基于Linux的CentOS。并且设置密码，用户名默认是root。 2.开放端口（重要） 3.安装NodeRed及其依赖的环境 3.1.使用ssh远程登陆服务器 3.2.安装依赖环境Nodejs
+ &amp;gt; yum install wget //安装wget工具 wget &amp;gt; https://nodejs.org/dist/v8.9.1/node-v8.9.1-linux-x64.tar.xz //获取压缩包 &amp;gt; tar -xvf node-v8.9.1-linux-x64.tar.xz	//解压 &amp;gt; ls	//查询目录下的文件 &amp;gt; cd node-v8.9.1-linux-x64	//进入该目录 &amp;gt; cd bin	//进入下一级目录 &amp;gt; ./node -v	//查看版本 对安装好的可执行程序进行软连接，便于使用。
+ln -s /root/node-v8.9.1-linux-x64/bin/npm /usr/local/bin/
+ln -s /root/node-v8.9.1-linux-x64/bin/node /usr/local/bin/ 查看版本，若回复版本号，安装成功。
+&amp;gt; node -v &amp;gt; npm -v 3.3.安装node-red
+ ln -s node-red的位置 /usr/local/bin/ sudo npm install -g &amp;ndash;unsafe-perm node-red
+ 3.4.验证是否安装成功 浏览器输入http://公网ip:1880，若出现node-red界面，则安装成功
+3.5.用pm2开启node-red 正常情况下，断开ssh连接时，Nodejs也会断开，从而node-red服务也会宕机。因此需要pm2来使其一直运行，pm2还支持其他服务。</description>
+    </item>
+    
+    <item>
+      <title>(Hu)go Template Primer</title>
+      <link>https://VersifierL.github.io/2014/goisforlovers/</link>
+      <pubDate>Wed, 02 Apr 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://VersifierL.github.io/2014/goisforlovers/</guid>
+      <description>Hugo uses the excellent Go html/template library for its template engine. It is an extremely lightweight engine that provides a very small amount of logic. In our experience that it is just the right amount of logic to be able to create a good static website. If you have used other template systems from different languages or frameworks you will find a lot of similarities in Go templates.
+This document is a brief primer on using Go templates.</description>
+    </item>
+    
+    <item>
+      <title>Getting Started with Hugo</title>
+      <link>https://VersifierL.github.io/2014/hugoisforlovers/</link>
+      <pubDate>Wed, 02 Apr 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://VersifierL.github.io/2014/hugoisforlovers/</guid>
+      <description>Step 1. Install Hugo Go to Hugo releases and download the appropriate version for your OS and architecture.
+Save it somewhere specific as we will be using it in the next step.
+More complete instructions are available at Install Hugo
+Step 2. Build the Docs Hugo has its own example site which happens to also be the documentation site you are reading right now.
+Follow the following steps:
+ Clone the Hugo repository Go into the repo Run hugo in server mode and build the docs Open your browser to http://localhost:1313  Corresponding pseudo commands:</description>
+    </item>
+    
+    <item>
+      <title>Introduction aux modèles (Hu)go</title>
+      <link>https://VersifierL.github.io/2014/goisforlovers.fr/</link>
+      <pubDate>Wed, 02 Apr 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://VersifierL.github.io/2014/goisforlovers.fr/</guid>
+      <description>Hugo utilise l&amp;rsquo;excellente librairie go html/template pour son moteur de modèles. c&amp;rsquo;est un moteur extrêmement léger qui offre un très petit nombre de fonctions logiques. À notre expérience, c&amp;rsquo;est juste ce qu&amp;rsquo;il faut pour créer un bon site web statique. Si vous avez déjà utilisé d&amp;rsquo;autre moteurs de modèles pour différents langages ou frameworks, vous allez retrouver beaucoup de similitudes avec les modèles go.
+Ce document est une introduction sur l&amp;rsquo;utilisation de Go templates.</description>
+    </item>
+    
+  </channel>
+</rss>

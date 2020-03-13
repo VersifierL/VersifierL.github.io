@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="prev" href="https://VersifierL.github.io/2014/goisforlovers/" />
+  <link rel="next" href="https://VersifierL.github.io/2014/migrate-from-jekyll/" />
+  <link rel="canonical" href="https://VersifierL.github.io/2020/noderedone/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           NodeRedOne | 生活在别处
+       
+  </title>
+  <meta name="title" content="NodeRedOne | 生活在别处">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="NodeRedOne"/>
+<meta name="twitter:description" content="一 安装环境 1.在私有服务器上安装CentOS 阿里云服务器有提供多种系统镜像，这里我使用基于Linux的CentOS。并且设置密码，用户名默认是root。 2.开放端口（重要） 3.安装NodeRed及其依赖的环境 3.1.使用ssh远程登陆服务器 3.2.安装依赖环境Nodejs
+ &gt; yum install wget //安装wget工具 wget &gt; https://nodejs.org/dist/v8.9.1/node-v8.9.1-linux-x64.tar.xz //获取压缩包 &gt; tar -xvf node-v8.9.1-linux-x64.tar.xz	//解压 &gt; ls	//查询目录下的文件 &gt; cd node-v8.9.1-linux-x64	//进入该目录 &gt; cd bin	//进入下一级目录 &gt; ./node -v	//查看版本 对安装好的可执行程序进行软连接，便于使用。
+ln -s /root/node-v8.9.1-linux-x64/bin/npm /usr/local/bin/
+ln -s /root/node-v8.9.1-linux-x64/bin/node /usr/local/bin/ 查看版本，若回复版本号，安装成功。
+&gt; node -v &gt; npm -v 3.3.安装node-red
+ ln -s node-red的位置 /usr/local/bin/ sudo npm install -g &ndash;unsafe-perm node-red
+ 3.4.验证是否安装成功 浏览器输入http://公网ip:1880，若出现node-red界面，则安装成功
+3.5.用pm2开启node-red 正常情况下，断开ssh连接时，Nodejs也会断开，从而node-red服务也会宕机。因此需要pm2来使其一直运行，pm2还支持其他服务。"/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": "NodeRedOne",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/VersifierL.github.io\/2020\/noderedone\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https:\/\/VersifierL.github.io\/logo.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  
+  "wordcount":  77 ,
+  "url": "https:\/\/VersifierL.github.io\/2020\/noderedone\/",
+  "datePublished": "2020-03-13T02:20:50\x2b08:00",
+  "dateModified": "2020-03-13T02:20:50\x2b08:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "Fastbyte01",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/VersifierL.github.io\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Fastbyte01"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://VersifierL.github.io">生活在别处</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/about" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://VersifierL.github.io">生活在别处</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/about" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title">NodeRedOne</h1>
+        <div class="post-meta">
+              <a href="https://VersifierL.github.io" rel="author">郭奕裕</a>  ♥ 
+                <span class="post-time">
+                     <time datetime=2020-03-13 >13 March 2020</time>
+                </span>
+                
+                
+                <i class="iconfont icon-timer"></i>
+                1 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+            
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h2 id="一-安装环境">一 安装环境</h2>
+<h5 id="1在私有服务器上安装centos">1.在私有服务器上安装CentOS</h5>
+<p>阿里云服务器有提供多种系统镜像，这里我使用基于Linux的CentOS。并且设置密码，用户名默认是root。
+<figure><img src="/images/ring.svg" data-sizes="auto" data-src="https://img-blog.csdnimg.cn/20200219145525917.png" alt="在这里插入图片描述" class="lazyload"><figcaption class="image-caption">在这里插入图片描述</figcaption></figure></p>
+<h5 id="2开放端口重要">2.开放端口（重要）</h5>
+<p><figure><img src="/images/ring.svg" data-sizes="auto" data-src="https://img-blog.csdnimg.cn/20200219151657411.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl8zODQ5NDEyOQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述" class="lazyload"><figcaption class="image-caption">在这里插入图片描述</figcaption></figure></p>
+<h5 id="3安装nodered及其依赖的环境">3.安装NodeRed及其依赖的环境</h5>
+<p><strong>3.1.使用ssh远程登陆服务器
+3.2.安装依赖环境Nodejs</strong></p>
+<pre><code>
+&gt; yum install wget //安装wget工具 wget
+&gt; https://nodejs.org/dist/v8.9.1/node-v8.9.1-linux-x64.tar.xz //获取压缩包
+&gt; tar -xvf node-v8.9.1-linux-x64.tar.xz	//解压 
+&gt; ls	//查询目录下的文件 
+&gt; cd node-v8.9.1-linux-x64	//进入该目录 
+&gt; cd bin	//进入下一级目录
+&gt; ./node -v	//查看版本
+</code></pre><p>对安装好的可执行程序进行软连接，便于使用。</p>
+<p>ln -s /root/node-v8.9.1-linux-x64/bin/npm /usr/local/bin/<br>
+ln -s /root/node-v8.9.1-linux-x64/bin/node /usr/local/bin/
+查看版本，若回复版本号，安装成功。</p>
+<pre><code>&gt; node -v
+&gt; npm -v
+</code></pre><p><strong>3.3.安装node-red</strong></p>
+<blockquote>
+<p>ln -s node-red的位置 /usr/local/bin/
+sudo npm install -g &ndash;unsafe-perm node-red</p>
+</blockquote>
+<p><strong>3.4.验证是否安装成功</strong>
+浏览器输入http://公网ip:1880，若出现node-red界面，则安装成功</p>
+<p><strong>3.5.用pm2开启node-red</strong>
+正常情况下，断开ssh连接时，Nodejs也会断开，从而node-red服务也会宕机。因此需要pm2来使其一直运行，pm2还支持其他服务。</p>
+<blockquote>
+<p>npm install -g pm2
+pm2 start node-red //用pm2启动node-red</p>
+</blockquote>
+<p>参考文献：<a href="https://www.cnblogs.com/pengdai/p/9143617.html">https://www.cnblogs.com/pengdai/p/9143617.html</a></p>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>:</span>
+                <span>郭奕裕 </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>:</span>
+                   <span>77</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+                <span>:</span>
+                <span>
+
+      
+      
+      
+      
+      
+      
+      
+      
+      
+        
+      
+        
+      
+
+          
+
+          
+
+          
+
+          
+</span>
+                
+            </p>
+
+             
+            <p class="copyright-item">
+                Released under <a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a>
+            </p>
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+        <section>
+                <a href="javascript:window.history.back();"></a></span> · 
+                <span><a href="https://VersifierL.github.io"></a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://VersifierL.github.io/2014/goisforlovers/" class="prev" rel="prev" title="(Hu)go Template Primer"><i class="iconfont icon-dajiantou"></i>&nbsp;(Hu)go Template Primer</a>
+         
+        
+        <a href="https://VersifierL.github.io/2014/migrate-from-jekyll/" class="next" rel="next" title="Migrate to Hugo from Jekyll">Migrate to Hugo from Jekyll&nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+          <div id="disqus_thread"></div>
+  <script type="text/javascript">
+      (function() {
+          
+          
+          if (window.location.hostname == "localhost")
+              return;
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          var disqus_shortname = 'yourdiscussshortname';
+          dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  <a href="https://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+ 
+
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2020 - 2020</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://VersifierL.github.io">郭奕裕</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    <link crossorigin="anonymous" integrity="sha384-yziQACfvCVwLqVFLqkWBYRO3XeA4EqzfXKGwaWnenYn5XzqfJFlFdKEmvutIQdKb" href="https://lib.baomitu.com/lightgallery/1.6.12/css/lightgallery.min.css" rel="stylesheet">
+      
+     <script src="/js/vendor_gallery.min.js" async="" ></script>
+    
+  
+
+
+
+
+
+
+
+     </div>
+  </body>
+</html>
